@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../css/auth/Login.css";
 import logo from "../../assets/logo.png";
-import Register from "./Register";
 
 function Login() {
   const [email, setEamil] = useState("");

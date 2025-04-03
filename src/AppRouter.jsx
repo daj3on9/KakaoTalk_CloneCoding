@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Login from "./page/auth/login";
+import Login from "./page/auth/Login";
 import Register from "./page/auth/Register";
 
 export default function AppRouter() {
