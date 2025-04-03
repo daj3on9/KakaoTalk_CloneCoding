@@ -2,8 +2,8 @@ main {
   position: fixed;
   overflow: hidden;
   top: 0;
-  right: 30%;
+  right: 33.3%;
   height: 100vh;
-  width: 40%;
+  width: 33.3%;
   display: flex;
 }
