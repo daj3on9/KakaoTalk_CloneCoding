@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useRegisterUser } from "../../hooks/useUser";
 import "../../css/auth/Register.css";
 
 function Register() {
@@ -7,15 +8,20 @@ function Register() {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
-  } = useForm();
+    formState: { errors, isValid },
+  } = useForm({
+    mode: "onChange", //유효성 검사 즉시 반영
+  });
 
-  const onSubmit = (data) => {
-    alert("제출 성공!", data);
-  };
+  const registerUserHook = useRegisterUser();
 
   // 비밀번호와 비밀번호 확인 비교용
   const password = watch("password");
+
+  const onSubmit = (data) => {
+    console.log(data);
+    registerUserHook(data);
+  };
 
   return (
     <div className="register-container">
@@ -27,7 +33,13 @@ function Register() {
               <input
                 type="text"
                 placeholder="이메일"
-                {...register("email", { required: "이메일을 입력해주세요." })}
+                {...register("email", {
+                  required: "이메일을 입력해주세요.",
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: "올바른 이메일 형식을 입력해주세요.",
+                  },
+                })}
               />
               <input
                 type="password"
@@ -61,7 +73,15 @@ function Register() {
                   errors.passwordCheck?.message ||
                   errors.nickname?.message}
               </p>
-              <button type="submit">회원가입</button>
+              <button
+                type="submit"
+                style={{
+                  backgroundColor: isValid ? "#423630" : "",
+                  color: isValid ? "#fff" : "",
+                }}
+              >
+                회원가입
+              </button>
             </div>
           </form>
         </div>
