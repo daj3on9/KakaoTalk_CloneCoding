@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useRegisterUser } from "../../hooks/useUser";
 import "../../css/auth/Register.css";
+import { postAPI } from "../../api/customAPI";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const {
@@ -12,15 +13,21 @@ function Register() {
   } = useForm({
     mode: "onChange", //유효성 검사 즉시 반영
   });
-
-  const registerUserHook = useRegisterUser();
+  const navigate = useNavigate();
 
   // 비밀번호와 비밀번호 확인 비교용
   const password = watch("password");
 
-  const onSubmit = (data) => {
-    console.log(data);
-    registerUserHook(data);
+  // 회원가입 API
+  const onSubmit = async (data) => {
+    const responseData = await postAPI("/signup", data);
+    if (responseData) {
+      alert("회원가입 성공");
+      console.log("회원가입 응답 : ", responseData);
+      navigate("/");
+    } else {
+      console.error("회원가입 요청 실패");
+    }
   };
 
   return (
@@ -59,9 +66,16 @@ function Register() {
               />
               <input
                 type="text"
-                placeholder="닉네임"
-                {...register("nickname", {
-                  required: "닉네임을 입력해주세요.",
+                placeholder="이름"
+                {...register("name", {
+                  required: "이름을 입력해주세요.",
+                })}
+              />
+              <input
+                type="number"
+                placeholder="전화번호"
+                {...register("phoneNumber", {
+                  required: "전화번호를 입력해주세요.",
                 })}
               />
             </div>
@@ -79,6 +93,7 @@ function Register() {
                   backgroundColor: isValid ? "#423630" : "",
                   color: isValid ? "#fff" : "",
                 }}
+                disabled={!isValid}
               >
                 회원가입
               </button>
