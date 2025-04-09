@@ -22,7 +22,7 @@ function Register() {
   const onSubmit = async (data) => {
     const responseData = await postAPI("/signup", data);
     if (responseData) {
-      alert("회원가입 성공");
+      alert("회원가입 성공! 로그인 창으로 이동합니다.");
       console.log("회원가입 응답 : ", responseData);
       navigate("/");
     } else {
@@ -53,6 +53,11 @@ function Register() {
                 placeholder="비밀번호"
                 {...register("password", {
                   required: "비밀번호를 입력해주세요.",
+                  pattern: {
+                    value: /^(?=.*[!@#$%^&*]).{8,}$/,
+                    message:
+                      "비밀번호는 최소 8자 이상이며, !@#$%^&* 중 하나 이상의 특수문자를 포함해야 합니다.",
+                  },
                 })}
               />
               <input
