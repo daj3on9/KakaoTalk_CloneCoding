@@ -4,9 +4,12 @@ import "../../css/auth/Login.css";
 import logo from "../../assets/logo.png";
 import { useForm } from "react-hook-form";
 import { postAPI } from "../../api/customAPI";
+import { setToken } from "../../store/tokenSlice";
+import { useDispatch } from "react-redux";
 
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -15,12 +18,16 @@ function Login() {
   } = useForm({ mode: "onChange" });
 
   const onSubmit = async (data) => {
-    console.log("login data : ", data);
     const responseData = await postAPI("/signin", data);
     if (responseData) {
-      alert("로그인 성공");
+      alert(`${responseData.user.name}님 환영합니다!`);
+      /*
+      * 콘솔 확인
       console.log("로그인 성공:", responseData);
-      // navigate("/");
+      console.log("token : ", responseData.accessToken);
+      */
+      dispatch(setToken(responseData.accessToken)); // store에 토큰 저장
+      navigate("/chatRooms");
     } else {
       console.error("로그인 실패");
     }
