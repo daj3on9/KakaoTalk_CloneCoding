@@ -4,9 +4,11 @@ import AppRouter from "./AppRouter";
 
 function App() {
   return (
-    <main>
-      <AppRouter />
-    </main>
+    <div id="app-wrapper">
+      <main>
+        <AppRouter />
+      </main>
+    </div>
   );
 }
 
