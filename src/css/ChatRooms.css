@@ -1,0 +1,18 @@
+/* 왼쪽 선 */
+.left-line {
+  width: 5%;
+  height: 100%;
+  background-color: #f6f6f6;
+  border-radius: 2px;
+}
+
+/* 메인 화면 */
+.content-area {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px 10px;
+}
+
+.content-area p span {
+  font-weight: bold;
+}
