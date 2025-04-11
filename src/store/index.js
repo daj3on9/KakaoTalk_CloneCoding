@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import {
   persistStore,
   persistReducer,
@@ -12,18 +12,22 @@ import {
 import storage from "redux-persist/lib/storage";
 
 import tokenReducer from "./tokenSlice";
+import userReducer from "./userSlice";
+
+const rootReducer = combineReducers({
+  token: tokenReducer,
+  user: userReducer,
+});
 
 const persistConfig = {
   key: "root",
   storage,
 };
 
-const persistedReducer = persistReducer(persistConfig, tokenReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
-  reducer: {
-    token: persistedReducer,
-  },
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

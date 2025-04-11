@@ -1,18 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  users: [],
+  userName: null,
 };
 
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    registerUser: (state, action) => {
-      state.users.push(action.payload);
+    // 사용자 이름 설정
+    setUserName: (state, action) => {
+      state.userName = action.payload;
+    },
+    // 사용자 이름 삭제
+    delUserName: (state) => {
+      state.userName = null;
     },
   },
 });
 
-export const { registerUser } = userSlice.actions;
+export const { setUserName } = userSlice.actions;
 export default userSlice.reducer;

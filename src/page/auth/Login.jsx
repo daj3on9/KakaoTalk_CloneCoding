@@ -5,6 +5,7 @@ import logo from "../../assets/logo.png";
 import { useForm } from "react-hook-form";
 import { postAPI } from "../../api/customAPI";
 import { setToken } from "../../store/tokenSlice";
+import { setUserName } from "../../store/userSlice";
 import { useDispatch } from "react-redux";
 
 function Login() {
@@ -27,6 +28,7 @@ function Login() {
       console.log("token : ", responseData.accessToken);
       */
       dispatch(setToken(responseData.accessToken)); // store에 토큰 저장
+      dispatch(setUserName(responseData.user.name)); // store에 이름 저장
       navigate("/chatRooms");
     } else {
       console.error("로그인 실패");
