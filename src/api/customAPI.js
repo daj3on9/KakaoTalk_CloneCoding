@@ -1,4 +1,5 @@
 import axios from "axios";
+import store from "../store/index.js";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -29,8 +30,8 @@ export const postAPI = async (endpoint, data) => {
 
 // Auth GET
 export const authGetAPI = async (endpoint) => {
+  const token = store.getState().token.accessToken;
   try {
-    const token = "1234"; // 더미값
     const response = await axios.get(`${BASE_URL}${endpoint}`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -45,8 +46,9 @@ export const authGetAPI = async (endpoint) => {
 
 // Auth POST
 export const authPostAPI = async (endpoint, data) => {
+  const token = store.getState().token.accessToken;
+
   try {
-    const token = "1234"; // 더미값
     const response = await axios.post(`${BASE_URL}${endpoint}`, data, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -61,8 +63,9 @@ export const authPostAPI = async (endpoint, data) => {
 
 // Auth PATCH
 export const patchAPI = async (endpoint, data) => {
+  const token = store.getState().token.accessToken;
+
   try {
-    const token = "1234";
     const response = await axios.patch(`${BASE_URL}${endpoint}`, data, {
       headers: {
         Authorization: `Bearer ${token}`,
