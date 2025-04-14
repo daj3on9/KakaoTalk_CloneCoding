@@ -1,0 +1,44 @@
+.chat-profile-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0px;
+  background-color: #fff;
+}
+
+.chat-profile-card img {
+  width: 15%;
+  border-radius: 10px;
+}
+
+.chat-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.chat-username {
+  font-weight: bold;
+}
+
+.chat-status {
+  color: #7c7c7c;
+}
+
+.chat-button {
+  color: #a3a3a3;
+  border: none;
+  height: 90%;
+}
+
+.chat-button:hover {
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.chat-button:focus {
+  outline: none;
+}
