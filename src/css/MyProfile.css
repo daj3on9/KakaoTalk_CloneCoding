@@ -1,0 +1,94 @@
+.my-profile-contianer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f6f6;
+}
+
+.upper-space {
+  flex-grow: 1;
+  height: 40%;
+}
+
+.my-profile-box {
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  height: 100%;
+}
+
+.my-profile-box img {
+  width: 50%;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.my-profile-txt {
+  display: flex;
+  height: 15%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.my-profile-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.my-profile-txt input {
+  width: 80%;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #d1d1d1;
+  text-align: center;
+}
+
+.my-profile-txt input:focus {
+  outline: none;
+}
+
+/*
+.my-profile-bio {
+}
+*/
+
+.my-profile-box > .button-box {
+  display: flex;
+  width: 80%;
+  align-items: center;
+  border-top: 2px solid #dadada;
+  padding: 40px 0px 0px;
+  margin: 0;
+  gap: 30px;
+}
+
+.my-profile-box > .button-box button {
+  margin: 0;
+  background-color: #dedddd;
+  color: #000;
+  cursor: pointer;
+}
+
+.my-profile-box > .button-box button:disabled {
+  outline: none;
+  cursor: not-allowed;
+  color: #bfbfbf;
+  background-color: #eeeeee;
+}
+
+.my-profile-box > .button-box button:focus {
+  outline: none;
+}
+
+.my-profile-box > .button-box button:hover {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.my-profile-box > .button-box button:disabled:hover {
+  box-shadow: none;
+}
