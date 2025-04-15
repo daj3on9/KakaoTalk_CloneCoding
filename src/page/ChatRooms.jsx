@@ -35,6 +35,18 @@ function ChatRooms() {
     getChatLists();
   }, [userName]);
 
+  // 확인
+  /*
+  const check = () => {
+    console.log("채팅방 목록 : ", chatList);
+    console.log(chatList.map((room) => console.log(room.id)));
+  };
+  
+  React.useEffect(() => {
+    check();
+  }, [chatList]);
+  */
+
   return (
     <>
       <div className="left-line"></div>
@@ -46,11 +58,6 @@ function ChatRooms() {
           <ChatProfileCard data={myInfo} state="me" />
         </div>
         <div className="under-line"></div>
-        <div>
-          {chatList.map((room) => (
-            <ChatProfileCard key={room.id} data={room} state="other" />
-          ))}
-        </div>
       </div>
     </>
   );
