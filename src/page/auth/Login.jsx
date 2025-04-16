@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../../css/auth/Login.css";
+import "./Login.css";
 import logo from "../../assets/logo.png";
 import { useForm } from "react-hook-form";
 import { postAPI } from "../../api/customAPI";

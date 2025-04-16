@@ -3,8 +3,8 @@ import { Routes, Route } from "react-router-dom";
 
 import Login from "./page/auth/Login";
 import Register from "./page/auth/Register";
-import ChatRooms from "./page/ChatRooms";
-import MyProfile from "./page/MyProfile";
+import ChatRooms from "./page/ChatRooms/ChatRooms";
+import MyProfile from "./page/MyProfile/MyProfile";
 
 export default function AppRouter() {
   return (

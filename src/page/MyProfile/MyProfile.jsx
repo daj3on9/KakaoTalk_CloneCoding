@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import defaultImg from "../assets/default.png";
-import { authGetAPI, patchAPI } from "../api/customAPI";
-import "../css/MyProfile.css";
+import defaultImg from "../../assets/default.png";
+import { authGetAPI, patchAPI } from "../../api/customAPI";
+import "./MyProfile.css";
 
 function MyProfile() {
   const [myInfo, setMyInfo] = useState({});

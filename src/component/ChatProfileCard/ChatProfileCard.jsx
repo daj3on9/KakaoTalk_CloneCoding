@@ -1,6 +1,6 @@
 import React from "react";
-import defaultImg from "../assets/default.png";
-import "../css/component/ChatProfileCard.css";
+import defaultImg from "../../assets/default.png";
+import "./ChatProfileCard.css";
 import { useNavigate } from "react-router-dom";
 
 function ChatProfileCard({ data, state }) {

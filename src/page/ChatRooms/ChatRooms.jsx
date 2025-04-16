@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "../css/ChatRooms.css";
-import { useName } from "../store/useStore";
-import { authGetAPI } from "../api/customAPI";
-import ChatProfileCard from "../component/ChatProfileCard";
+import "./ChatRooms.css";
+import { useName } from "../../store/useStore";
+import { authGetAPI } from "../../api/customAPI";
+import ChatProfileCard from "../../component/ChatProfileCard/ChatProfileCard";
 
 function ChatRooms() {
   const userName = useName();

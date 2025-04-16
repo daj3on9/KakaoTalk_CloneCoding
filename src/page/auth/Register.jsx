@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import "../../css/auth/Register.css";
+import "./Register.css";
 import { postAPI } from "../../api/customAPI";
 import { useNavigate } from "react-router-dom";
 
