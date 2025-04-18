@@ -77,10 +77,15 @@ function Register() {
                 })}
               />
               <input
-                type="number"
+                type="tel"
                 placeholder="전화번호"
                 {...register("phoneNumber", {
                   required: "전화번호를 입력해주세요.",
+                  pattern: {
+                    value: /^010\d{7}$/,
+                    message:
+                      "전화번호는 010으로 시작하며 숫자 10자리여야 합니다.",
+                  },
                 })}
               />
             </div>
@@ -90,7 +95,8 @@ function Register() {
                 {errors.email?.message ||
                   errors.password?.message ||
                   errors.passwordCheck?.message ||
-                  errors.nickname?.message}
+                  errors.nickname?.message ||
+                  errors.phoneNumber?.message}
               </p>
               <button
                 type="submit"
