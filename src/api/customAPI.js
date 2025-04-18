@@ -20,7 +20,7 @@ export const postAPI = async (endpoint, data) => {
     const response = await axios.post(`${BASE_URL}${endpoint}`, data);
     return response.data;
   } catch (error) {
-    if (error.response.status === 401) {
+    if (error.response.status === 401 || error.response.status === 404) {
       alert(error.response.data.message);
     }
     console.error("POST METHOD ERROR: ", error);

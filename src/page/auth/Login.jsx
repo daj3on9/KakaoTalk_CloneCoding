@@ -43,7 +43,13 @@ function Login() {
           <input
             type="text"
             placeholder="카카오계정(이메일)"
-            {...register("email", { required: "이메일을 입력해주세요." })}
+            {...register("email", {
+              required: "이메일을 입력해주세요.",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "올바른 이메일 형식을 입력해주세요.",
+              },
+            })}
           />
 
           <input
