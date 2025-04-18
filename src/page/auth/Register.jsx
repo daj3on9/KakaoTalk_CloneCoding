@@ -82,9 +82,9 @@ function Register() {
                 {...register("phoneNumber", {
                   required: "전화번호를 입력해주세요.",
                   pattern: {
-                    value: /^010\d{7}$/,
+                    value: /^010\d{8}$/,
                     message:
-                      "전화번호는 010으로 시작하며 숫자 10자리여야 합니다.",
+                      "전화번호는 010으로 시작하며 숫자 11자리여야 합니다.",
                   },
                 })}
               />
