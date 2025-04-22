@@ -30,10 +30,33 @@ function ChatRooms() {
   };
 
   React.useEffect(() => {
-    // console.log(userName);
     getMyInfo();
     getChatLists();
   }, [userName]);
+
+  // 내 정보 넘겨주기
+  const getProfileForMe = (user) => ({
+    name: user.name,
+    profileImage: user.profile_image_url,
+    statusMessage: user.bio || "상태메세지 없음",
+    isMine: true,
+  });
+
+  // 채팅방 정보 넘겨주기
+  const getProfileForRooms = (room) => ({
+    name: room.other_user.name,
+    profileImage: room.other_user.profile_image_url,
+    statusMessage: room.last_message?.content || "메세지 없음",
+    time: formatTime(room.last_message?.updated_at) || "",
+    isMine: false,
+  });
+
+  const formatTime = (isoString) => {
+    return new Date(isoString).toLocaleTimeString("ko-KR", {
+      hour: "2-digit",
+      minue: "2-digit",
+    });
+  };
 
   return (
     <>
@@ -42,13 +65,15 @@ function ChatRooms() {
         <p>
           <span>{userName}</span> 님의 채팅
         </p>
-        <div>
-          <ChatProfileCard data={myInfo} state="me" />
-        </div>
+        <ChatProfileCard profile={getProfileForMe(myInfo)} />
         <div className="under-line"></div>
-        <div>
+        <div className="chatRoom-list-area">
           {chatList.map((room) => (
-            <ChatProfileCard key={room.id} data={room} state="other" />
+            <ChatProfileCard
+              key={room.id}
+              profile={getProfileForRooms(room)}
+              onClick={() => console.log(`${room.id} 클릭!`)}
+            />
           ))}
         </div>
       </div>
