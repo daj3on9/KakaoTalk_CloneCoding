@@ -1,23 +1,26 @@
 .chat-profile-card {
   display: flex;
   flex-direction: row;
-  align-items: center;
   gap: 12px;
   padding: 10px 0px;
   background-color: #fff;
-  height: 100%;
+  height: 75px;
+  box-sizing: border-box;
+  align-items: center;
+  width: 350px;
 }
 
 .chat-profile-card img {
-  width: 15%;
+  width: 50px;
   border-radius: 10px;
 }
 
 .chat-info {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   height: 100%;
 }
 
@@ -27,6 +30,19 @@
 
 .chat-status {
   color: #7c7c7c;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chat-right {
+  display: flex;
+  flex-shrink: 0;
+  margin-left: 10px;
+  white-space: nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .chat-button {
@@ -45,7 +61,7 @@
 
 .chat-time {
   height: 100%;
-  margin-top: 30px;
+  margin-top: 10px;
   color: #7c7c7c;
   margin-right: 5px;
 }
