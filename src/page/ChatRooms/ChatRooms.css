@@ -23,6 +23,24 @@
   font-weight: bold;
 }
 
+.chatRoom-list-area {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+
+  /* 스크롤 안보이게 */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* 스크롤 안보이게 */
+.chatRoom-list-area::-webkit-scrollbar {
+  display: none;
+}
+
 /* 구분선 */
 .under-line {
   width: 100%;
