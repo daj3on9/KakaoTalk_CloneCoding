@@ -1,0 +1,58 @@
+.chat-bubble-wrapper {
+  display: flex;
+  margin: 4px 8px;
+}
+
+.chat-bubble-wrapper.yes {
+  justify-content: flex-end;
+}
+
+.chat-bubble-wrapper.no {
+  justify-content: flex-start;
+}
+
+.chat-bubble {
+  max-width: 60%;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-break: break-word;
+  position: relative;
+}
+
+/* 내 메시지 */
+.chat-bubble-wrapper.yes .chat-bubble {
+  background-color: #fae100;
+  color: black;
+}
+
+/* 상대 메시지 */
+.chat-bubble-wrapper.no .chat-bubble {
+  background-color: white;
+  color: black;
+}
+
+/* 시간 표시 */
+.chat-bubble-wrapper {
+  display: flex;
+  align-items: flex-end;
+  margin: 4px 8px;
+}
+
+.chat-time {
+  font-size: 12px;
+  color: #333;
+  margin: 2px 6px;
+  white-space: nowrap;
+}
+
+/* 왼쪽 정렬일 때 시간은 오른쪽에 */
+.chat-time.left {
+  order: 0;
+}
+
+/* 오른쪽 정렬일 때 시간은 왼쪽에 */
+.chat-time.right {
+  order: 2;
+}

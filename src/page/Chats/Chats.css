@@ -1,0 +1,62 @@
+.chat-container {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #c1d6e8;
+}
+
+/* 헤더 */
+.chat-header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #c1d6e8;
+  padding: 0 16px;
+  position: relative;
+}
+
+/* 좌우 공간 확보용 */
+.chat-back-button,
+.chat-header-placeholder {
+  flex: 1;
+}
+
+/* 가운데 정렬 */
+.chat-user-name {
+  flex: 2;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* 채팅 리스트 */
+.chat-messages {
+  flex: 8;
+  background-color: #c1d6e8;
+  padding: 10px 3px 10px 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* 아래의 모든 코드는 영역::코드로 사용 */
+.chat-messages::-webkit-scrollbar {
+  width: 10px; /* 스크롤바의 너비 */
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  height: 5%; /* 스크롤바의 길이 */
+  background: #82828291; /* 스크롤바의 색상 */
+  border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: rgba(158, 158, 158, 0.1); /*스크롤바 뒷 배경 색상*/
+}
+
+/* 입력창 */
+.chat-input-section {
+  flex: 2;
+  background-color: #fff;
+}
