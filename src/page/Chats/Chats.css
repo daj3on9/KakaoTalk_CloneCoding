@@ -33,14 +33,13 @@
 
 /* 채팅 리스트 */
 .chat-messages {
-  flex: 8;
+  flex: 6;
   background-color: #c1d6e8;
   padding: 10px 3px 10px 10px;
   overflow-y: auto;
   overflow-x: hidden;
 }
 
-/* 아래의 모든 코드는 영역::코드로 사용 */
 .chat-messages::-webkit-scrollbar {
   width: 10px; /* 스크롤바의 너비 */
 }
@@ -57,6 +56,60 @@
 
 /* 입력창 */
 .chat-input-section {
+  display: flex;
   flex: 2;
   background-color: #fff;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.chat-sender-select {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 30px;
+  background-color: #ececec;
+  padding: 3px;
+}
+
+.chat-textarea {
+  flex: 8;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px 10px;
+}
+
+.chat-textarea textarea {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: none;
+  resize: none;
+}
+
+.chat-textarea textarea:focus {
+  outline: none;
+}
+
+.chat-submit-button {
+  box-sizing: border-box;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.chat-submit-button button {
+  background-color: #f5f5f5;
+  color: #a3a3a3;
+  padding: 5px 30px;
+}
+
+.chat-submit-button button:hover {
+  color: #423630;
+  background-color: #fae100;
 }
