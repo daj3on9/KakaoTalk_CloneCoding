@@ -40,7 +40,7 @@
   margin: 4px 8px;
 }
 
-.chat-time {
+.chat-bubble-wrapper > .chat-time {
   font-size: 12px;
   color: #333;
   margin: 2px 6px;

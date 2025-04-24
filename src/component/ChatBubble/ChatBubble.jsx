@@ -3,10 +3,10 @@ import "./ChatBubble.css";
 
 function ChatBubble({ style, data, time }) {
   const formatTime = (isoString) => {
-    return new Date(isoString).toLocaleTimeString("ko-KR", {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
+    const date = new Date(isoString);
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    return `${hours}:${minutes}`;
   };
 
   return (
