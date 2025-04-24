@@ -1,5 +1,5 @@
 import React from "react";
-import ChatBubble from "../../component/ChatBubble/ChatBubble";
+import ChatBubble from "../../components/ChatBubble/ChatBubble";
 import "./Chats.css";
 
 function Chats(props) {
