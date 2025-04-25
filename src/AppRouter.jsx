@@ -14,7 +14,8 @@ export default function AppRouter() {
       <Route path="/register" element={<Register />} />
       <Route path="/myProfile" element={<MyProfile />} />
       <Route path="/chatRooms" element={<ChatRooms />} />
-      <Route path="/chatRooms/chats" element={<Chats />} />
+      <Route path="/chatRooms/me" element={<Chats />} />
+      <Route path="/chatRooms/:id/chats" element={<Chats />} />
     </Routes>
   );
 }

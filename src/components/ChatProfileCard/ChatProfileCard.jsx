@@ -2,20 +2,47 @@ import React from "react";
 import defaultImg from "../../assets/default.png";
 import "./ChatProfileCard.css";
 import { useNavigate } from "react-router-dom";
+import { formatTime } from "../../utils/time";
 
-function ChatProfileCard({ profile, onClick }) {
+export default function ChatProfileCard({
+  chatroomId,
+  profile,
+  isMine = false,
+}) {
   const navigate = useNavigate();
 
   // 프로필 사진 클릭 시 내 프로필로 이동
   const onClickImg = (e) => {
-    e.preventDefault();
-    if (profile.isMine) {
+    e.stopPropagation();
+    if (isMine) {
       navigate("/myProfile");
     }
   };
 
+  // 채팅방으로 이동
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    if (!isMine) {
+      navigate(`/ChatRooms/${room.id}/chats`, {
+        state: {
+          otherUserName: room.other_user.name,
+          otherUserId: room.other_user.id, // optional
+        },
+      });
+    }
+  };
+
+  // 내 채팅방으로 이동
+  const handleMyChatClick = (e) => {
+    e.preventDefault();
+    if (isMine) {
+      navigate("/chatrooms/me");
+    }
+  };
+
   return (
-    <div className="chat-profile-card" onClick={onClick}>
+    <div className="chat-profile-card" onClick={handleClick}>
       <img
         src={profile?.profileImage || defaultImg}
         alt="profile"
@@ -26,16 +53,17 @@ function ChatProfileCard({ profile, onClick }) {
         <p className="chat-status">{profile?.statusMessage || "없음"}</p>
       </div>
       <div className="chat-right">
-        {profile.isMine ? (
-          <button className="chat-button" onClick={onClick}>
+        {isMine ? (
+          <button className="chat-button" onClick={handleMyChatClick}>
             나와의 채팅
           </button>
         ) : (
-          <p className="chat-time"> {profile.time} </p>
+          <p className="chat-time">
+            {" "}
+            {profile.time ? formatTime(profile.time) : ""}{" "}
+          </p>
         )}
       </div>
     </div>
   );
 }
-
-export default React.memo(ChatProfileCard);
