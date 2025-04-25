@@ -18,6 +18,10 @@
   position: relative;
 }
 
+.chat-back-button {
+  cursor: pointer;
+}
+
 /* 좌우 공간 확보용 */
 .chat-back-button,
 .chat-header-placeholder {
@@ -107,9 +111,11 @@
   background-color: #f5f5f5;
   color: #a3a3a3;
   padding: 5px 30px;
+  cursor: default;
 }
 
-.chat-submit-button button:hover {
+.chat-submit-button button:not(:disabled):hover {
   color: #423630;
   background-color: #fae100;
+  cursor: pointer;
 }

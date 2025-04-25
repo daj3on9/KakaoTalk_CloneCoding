@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { formatTime } from "../../utils/time";
 
 export default function ChatProfileCard({
-  chatroomId,
   profile,
+  chatroomId,
   isMine = false,
 }) {
   const navigate = useNavigate();
@@ -24,10 +24,12 @@ export default function ChatProfileCard({
     e.preventDefault();
 
     if (!isMine) {
-      navigate(`/ChatRooms/${room.id}/chats`, {
+      navigate(`/ChatRooms/${chatroomId}/chats`, {
         state: {
-          otherUserName: room.other_user.name,
-          otherUserId: room.other_user.id, // optional
+          roomId: chatroomId,
+          myUserId: profile.myUserId,
+          otherUserName: profile.name,
+          otherUserId: profile.otherUserId,
         },
       });
     }
@@ -37,7 +39,12 @@ export default function ChatProfileCard({
   const handleMyChatClick = (e) => {
     e.preventDefault();
     if (isMine) {
-      navigate("/chatrooms/me");
+      navigate("/chatrooms/me", {
+        state: {
+          roomId: chatroomId,
+          myUserId: profile.myUserId,
+        },
+      });
     }
   };
 

@@ -18,6 +18,8 @@ function ChatRooms() {
     const profile = useMemo(
       () => ({
         name: room.other_user.name,
+        myUserId: room.first_user_id,
+        otherUserId: room.second_user_id,
         profileImage: room.other_user.profile_image_url,
         statusMessage: room.last_message?.content ?? "메시지 없음",
         time: room.last_message?.updated_at,
@@ -43,6 +45,7 @@ function ChatRooms() {
         <ChatProfileCard
           profile={{
             name: myInfo.name,
+            myUserId: myInfo.id,
             profileImage: myInfo.profile_image_url,
             statusMessage: myInfo.bio || "상태메세지 없음",
           }}
@@ -52,7 +55,7 @@ function ChatRooms() {
         <div className="under-line"></div>
         <div className="chatRoom-list-area">
           {chatList.map((room) => (
-            <ChatRoomItem key={room.id} room={room} />
+            <ChatRoomItem key={room.id} room={room} chatroomId={room.id} />
           ))}
         </div>
       </div>
