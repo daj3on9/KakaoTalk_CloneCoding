@@ -8,9 +8,8 @@ function ChatRooms() {
   const userName = useName();
   const { myInfo, chatList } = useChatRooms();
 
-  //  로딩 스피너 표시
   if (!myInfo) {
-    return <div className="content-area">로딩 중…</div>;
+    return null;
   }
 
   // 컴포넌트 재렌더링 방지
