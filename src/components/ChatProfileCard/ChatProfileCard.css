@@ -13,6 +13,7 @@
 .chat-profile-card img {
   width: 50px;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .chat-info {

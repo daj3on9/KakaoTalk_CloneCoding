@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import defaultImg from "../../assets/default.png";
+import back from "../../assets/back.png";
 import { authGetAPI, patchAPI } from "../../api/customAPI";
 import "./MyProfile.css";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function MyProfile() {
+  const { state } = useLocation();
+  const { roomId, myUserId } = state;
+  const navigate = useNavigate();
+
   const [myInfo, setMyInfo] = useState({});
   const [editMode, setEditMode] = useState(false);
   const [editInfo, setEditInfo] = useState({
@@ -48,9 +54,25 @@ function MyProfile() {
     }));
   };
 
+  // 뒤로 가기 버튼
+  const handleGoBack = (e) => {
+    navigate(-1);
+  };
+
+  const handleClick = (e) => {
+    navigate("/chatrooms/me", {
+      state: {
+        roomId: roomId,
+        myUserId: myUserId,
+      },
+    });
+  };
+
   return (
     <div className="my-profile-contianer">
-      <div className="upper-space"></div>
+      <div className="upper-space">
+        <img src={back} onClick={handleGoBack} alert="뒤로가기 버튼" />
+      </div>
       <div className="my-profile-box">
         <img src={myInfo?.profile_image_url || defaultImg} alt="profile" />
         <div className="my-profile-txt">
@@ -81,7 +103,10 @@ function MyProfile() {
           )}
         </div>
         <div className="button-box">
-          <button disabled={editMode}> 나와의 채팅 </button>
+          <button onClick={handleClick} disabled={editMode}>
+            {" "}
+            나와의 채팅{" "}
+          </button>
           <button onClick={handleEditMode}>
             {" "}
             {editMode ? "저장하기" : "프로필 편집"}{" "}

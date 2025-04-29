@@ -13,9 +13,14 @@ export default function ChatProfileCard({
 
   // 프로필 사진 클릭 시 내 프로필로 이동
   const onClickImg = (e) => {
-    e.stopPropagation();
+    e.preventDefault();
     if (isMine) {
-      navigate("/myProfile");
+      navigate("/myProfile", {
+        state: {
+          roomId: chatroomId,
+          myUserId: profile.myUserId,
+        },
+      });
     }
   };
 
@@ -49,7 +54,11 @@ export default function ChatProfileCard({
   };
 
   return (
-    <div className="chat-profile-card" onClick={handleClick}>
+    <div
+      className="chat-profile-card"
+      onClick={handleClick}
+      style={isMine ? {} : { cursor: "pointer" }}
+    >
       <img
         src={profile?.profileImage || defaultImg}
         alt="profile"

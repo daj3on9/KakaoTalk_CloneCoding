@@ -7,8 +7,18 @@
 }
 
 .upper-space {
+  box-sizing: border-box;
   flex-grow: 1;
   height: 40%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px 15px;
+}
+
+.upper-space > img {
+  width: 15px;
+  cursor: pointer;
 }
 
 .my-profile-box {
