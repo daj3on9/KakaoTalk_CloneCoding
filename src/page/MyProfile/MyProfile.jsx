@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import defaultImg from "../../assets/default.png";
 import back from "../../assets/back.png";
-import { authGetAPI, patchAPI } from "../../api/customAPI";
+import { getAPI, patchAPI } from "../../api/customAPI";
 import "./MyProfile.css";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -23,7 +23,7 @@ function MyProfile() {
 
   // 내 정보 불러오기
   const getMyInfo = async () => {
-    const responseData = await authGetAPI("/users/me");
+    const responseData = await getAPI("/users/me");
     if (responseData) {
       setMyInfo(responseData);
     } else {

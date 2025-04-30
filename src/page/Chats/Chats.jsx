@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ChatBubble from "../../components/ChatBubble/ChatBubble";
 import "./Chats.css";
+import backImg from "../../assets/back.png";
 import { useLocation, useNavigate } from "react-router-dom";
-import { authGetAPI, authPostAPI } from "../../api/customAPI";
+import { getAPI, postAPI } from "../../api/customAPI";
 
 function Chats() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ function Chats() {
 
   // 대화 내용 불러오기
   const fetchMessage = async () => {
-    const response = await authGetAPI(`/chatrooms/${roomKey}/chats`);
+    const response = await getAPI(`/chatrooms/${roomKey}/chats`);
     setMesseges(response);
     // console.log(response)
   };
@@ -49,13 +50,7 @@ function Chats() {
       content: inputMessage,
     };
 
-    // 확인용 콘솔
-    /*
-    console.log("전송하는 데이터 : ", data);
-    console.log("roomId : ", roomId);
-    */
-
-    const postMessage = await authPostAPI(`/chatrooms/${roomKey}/chats`, data);
+    const postMessage = await postAPI(`/chatrooms/${roomKey}/chats`, data);
 
     if (postMessage) {
       console.log("전송함 : ", postMessage);
@@ -71,8 +66,7 @@ function Chats() {
     <div className="chat-container">
       <div className="chat-header">
         <div className="chat-back-button" onClick={handleGoBackClick}>
-          {" "}
-          &lt;{" "}
+          <img src={backImg} alt="뒤로가기 버튼" width={"15px"} />
         </div>
         <div className="chat-user-name">
           {otherUserName ? otherUserName : "나와의 채팅"}

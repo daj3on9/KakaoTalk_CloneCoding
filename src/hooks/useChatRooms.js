@@ -1,6 +1,6 @@
 // src/hooks/useChatRooms.js
 import { useState, useEffect } from "react";
-import { authGetAPI } from "../api/customAPI";
+import { getAPI } from "../api/customAPI";
 
 export function useChatRooms() {
   const [myInfo, setMyInfo] = useState(null);
@@ -9,8 +9,8 @@ export function useChatRooms() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const me = await authGetAPI("/users/me");
-        const rooms = await authGetAPI("/users/me/chatrooms");
+        const me = await getAPI("/users/me");
+        const rooms = await getAPI("/users/me/chatrooms");
         setMyInfo(me);
         setChatList(rooms);
       } catch (err) {
